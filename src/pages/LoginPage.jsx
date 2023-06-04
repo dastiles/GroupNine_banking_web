@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
 import { login, reset } from "../features/auth/authSlice"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
 
@@ -97,7 +97,8 @@ const LoginPage = () => {
                     <button type='submit' className="bg-dodgerBlue text-white font-bold rounded-full py-2 tracking-wide hover:shadow-lg">Login Account</button>
                 </form>
             </div>
-
+            <p className='my-5'> I am a new user? <span className='text-dodgerBlue
+            '><Link to='/register'>Open new account with us</Link></span></p>
         </div>
     )
 }

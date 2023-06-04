@@ -21,9 +21,8 @@ const makePayment = async (payment, token) => {
 
     const response = await axios.post(url + '/sent', payment, config)
     console.log(response.data)
-    if (Object.hasOwn(response.data, 'blocked')) {
-        saveUser.removeUser('user')
-        saveUser.save('blocked', response.data)
+    if (Object.hasOwn(response.data, 'user')) {
+        saveUser.save('sucessPayment', JSON.stringify(response.data))
     }
     return response.data
 

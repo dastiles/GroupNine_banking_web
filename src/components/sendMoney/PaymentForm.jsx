@@ -5,6 +5,7 @@ import locs from '../../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPayment, reset } from '../../features/payments/paymentSlice'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 
 const PaymentForm = () => {
@@ -20,15 +21,23 @@ const PaymentForm = () => {
     const { isError, isSuccess, message } = useSelector((state) => state.payment)
 
     const dispatch = useDispatch()
+    const redirect = useNavigate()
 
     useEffect(() => {
         if (isError) {
             toast.error(message)
         }
 
+        if (isSuccess) {
+            redirect('/success')
+        }
+
+
+        console.log(isSuccess)
+
 
         dispatch(reset())
-    }, [isError, isSuccess, message, dispatch])
+    }, [isError, isSuccess, message, dispatch, redirect])
     const onChange = e => {
         setFormData((prevState) => ({
             ...prevState,
@@ -43,13 +52,18 @@ const PaymentForm = () => {
             return
         }
 
-
+        const regex = /^07\d{8}$/
+        if (!regex.test(phone)) {
+            toast.error('Enter valid phone number')
+            return
+        }
 
         const userData = {
             phone, amount, location, destination, password
         }
 
         dispatch(createPayment(userData))
+
 
     }
     return (

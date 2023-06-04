@@ -48,10 +48,22 @@ const logout = () => {
     saveUser.removeUser()
 }
 
+const getUser = async (token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const response = await axios.get(url + '/user', config)
+
+    return response.data
+}
+
 const authService = {
     register,
     login,
     logout,
+    getUser,
 }
 
 export default authService

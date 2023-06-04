@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { register, reset } from "../features/auth/authSlice"
 
@@ -117,7 +117,8 @@ const RegisterPage = () => {
                     <button type="submit" className="bg-dodgerBlue text-white font-bold rounded-full py-2 tracking-wide hover:shadow-lg">Create Account</button>
                 </form>
             </div>
-
+            <p className='my-5'> Already have an account? <span className='text-dodgerBlue
+            '><Link to='/login'>Login in</Link></span></p>
         </div>
     )
 }

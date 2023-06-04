@@ -10,6 +10,8 @@ import LoanPage from "./pages/loan"
 import BankStatement from "./pages/bankStatement"
 import ProfilePage from "./pages/profilePage"
 import AboutPage from "./pages/aboutPage"
+import Footer from "./components/footer/footer"
+import Success from "./pages/success"
 
 const App = () => {
   return (
@@ -26,8 +28,10 @@ const App = () => {
             <Route path='/bankstatement' element={<BankStatement />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/profile' element={<ProfilePage />} />
+            <Route path='/success' element={<Success />} />
           </Routes>
         </main>
+        <Footer />
         <ToastContainer limit={1} />
       </Router>
 

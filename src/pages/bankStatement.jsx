@@ -20,6 +20,9 @@ const BankStatement = () => {
         }
         dispatch(getPayments())
 
+        return () => {
+            dispatch(reset())
+        }
 
     }, [isError, message, dispatch, user, redirect])
     console.log(payments)
